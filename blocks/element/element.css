@@ -1,0 +1,7 @@
+.element{
+    display: grid;
+    width: 282px;
+    height: 361px;
+    border-radius: 10%;
+    background-color: #fff;
+}

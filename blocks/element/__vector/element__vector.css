@@ -1,0 +1,22 @@
+.element__vector{
+    background-image: url(../../../images/Like.svg);
+    background-color: initial;
+    background-repeat : no-repeat;
+    width: 22px;
+    height: 19px;
+    display: grid;
+    align-self: center;
+    justify-self: center;
+    border: none;
+    cursor: pointer;
+}
+.element__vector:hover{
+    opacity: 0.5;
+    transition: all .3s linear;
+    -webkit-transition: all .3s linear;
+    -moz-transition: all .3s linear; 
+}
+.element__vector:active{
+    background-image: url(../../../images/Like_Active.svg);
+    opacity: 1;
+}

@@ -1,0 +1,14 @@
+.profile__info{
+    display: grid;
+    width: 336px;
+    position: relative;
+    align-content: space-evenly;
+}
+@media screen and (max-width: 320px) {
+    .profile__info{
+        max-width: 282px;
+        max-height: 54px;
+        justify-content: space-evenly;
+        justify-items: center;
+    }
+}

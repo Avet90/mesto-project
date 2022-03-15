@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./pages/index.css">
+    <title>Mestro-prject</title>
+</head>
+<body class="page">
+    <header class="header">
+        <img class="header__logo" src="./images/Vector.svg" alt="Лого">
+        <div class="header__line"></div>
+    </header>
+    <main class="content">
+        <div class="profile">
+                <img class="profile__avatar" src="./images/image.jpg" alt="Аватар">
+            <article class="profile__info">
+                <h1 class="profile__title">Жак-Ив Кусто</h1>
+                <p class="profile__subtitle">Исследователь океана</p>
+                <button type="button" class="profile__edit-button"></button>
+            </article>
+            <button class="profile__add-button" type="button"></button>
+        </div>
+        <div class="elements">
+            <article class="element">
+                <img class="element__img" src="./images/Карачаевск.jpg" alt="Карачаевск">
+                <div class="element__group">
+                    <h2 class="element__title">Карачаевск</h2>
+                    <button type="button" class="element__vector"></button>
+                </div>
+            </article>
+            <article class="element">
+                <img class="element__img" src="./images/Гора Эльбрус.jpg" alt="Гора Эльбрус">
+                <div class="element__group">
+                    <h2 class="element__title">Гора Эльбрус</h2>
+                    <button type="button" class="element__vector"></button>
+                </div>
+            </article>
+            <article class="element">
+                <img class="element__img" src="./images/Домбай.jpg" alt="Домбай">
+                <div class="element__group">
+                    <h2 class="element__title">Домбай</h2>
+                    <button type="button" class="element__vector"></button>
+                </div>
+            </article>
+            <article class="element">
+                <img class="element__img" src="./images/ararat.jpeg" alt="Гора Арарат">
+                <div class="element__group">
+                    <h2 class="element__title">Гора Арарат</h2>
+                    <button type="button" class="element__vector"></button>
+                </div>
+            </article>
+            <article class="element">
+                <img class="element__img" src="./images/kaskad.jpeg" alt="Каскад">
+                <div class="element__group">
+                    <h2 class="element__title">Каскад</h2>
+                    <button type="button" class="element__vector"></button>
+                </div>
+            </article>
+            <article class="element">
+                <img class="element__img" src="./images/spb.jpeg" alt="Санкт-Петербург">
+                <div class="element__group">
+                    <h2 class="element__title">Санкт-Петербург</h2>
+                    <button type="button" class="element__vector"></button>
+                </div>
+            </article>
+
+        </div>
+    </main>
+    <footer class="footer">
+        <p class="footer__text">© 2020 Mesto Russia</p>
+    </footer>
+    <div class="popup">
+        <div class="popup__container">
+            <form class="popup__form" action="popup__form">
+                <h2 class="popup__heading"> Редактировать профиль </h2>
+                <input class="popup__field popup__field_line" type="text" id='heading' name='heading' value="Жак-Ив Кусто" required>
+                <input class="popup__field popup__field_line" type="text" id='subheading' name='subheading' value="Исследователь океана" required>
+                <input class="popup__button" type="image" src="./images/Submit_Button.svg" alt="Сохранить">
+                <input class="popup__close" type="image" src="./images/Close_Icon.svg" alt="Закрыть">
+            </form> 
+        </div>
+    </div>
+</bodyc>
+</html>

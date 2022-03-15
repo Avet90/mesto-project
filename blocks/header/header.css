@@ -1,0 +1,15 @@
+.header{
+    display: grid;
+    justify-items: center;
+    width: 880px;
+    height: 74px;
+    margin-top: 45px;
+    overflow:hidden;
+}
+@media screen and (max-width: 320px) {
+    .header{
+        max-width: 320px;
+        max-height: 56px;
+        margin-top: 28px;
+    }
+}

@@ -1,0 +1,10 @@
+.header__logo{
+    justify-self: start;
+}
+@media screen and (max-width: 320px) {
+    .logo{
+        max-width: 103.74px;
+        max-height: 24.4px;
+        margin-left: 27px;
+    }
+}

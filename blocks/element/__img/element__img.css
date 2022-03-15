@@ -1,0 +1,8 @@
+.element__img{
+    object-fit: cover;
+    width: 282px;
+    height: 282px;
+    border-top-left-radius: 10%;
+    border-top-right-radius: 10%;
+    z-index: 2;
+}

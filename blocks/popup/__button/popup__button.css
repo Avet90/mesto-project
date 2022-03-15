@@ -1,0 +1,14 @@
+.popup__button{
+    border-color: #fff;
+}
+.popup__button:hover{
+    opacity: 0.5;
+    transition: all .3s linear;
+    -webkit-transition: all .3s linear;
+    -moz-transition: all .3s linear; 
+}
+@media screen and (max-width: 320px) {
+    .popup__button{
+        max-width: 238px;
+    }
+}
