@@ -2,7 +2,7 @@
     object-fit: cover;
     width: 282px;
     height: 282px;
-    border-top-left-radius: 10%;
-    border-top-right-radius: 10%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     z-index: 2;
 }
