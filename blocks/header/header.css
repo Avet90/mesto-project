@@ -1,15 +1,13 @@
-.header{
-    display: grid;
-    justify-items: center;
-    width: 880px;
-    height: 74px;
-    margin-top: 45px;
-    overflow:hidden;
+.header {
+  max-width: 880px;
+  min-width: 880px;
+  margin-top: 45px;
+  border-bottom: 1px solid #545454;
 }
 @media screen and (max-width: 320px) {
-    .header{
-        max-width: 320px;
-        max-height: 56px;
-        margin-top: 28px;
-    }
+  .header {
+    max-width: 320px;
+    min-width: 320px;
+    margin-top: 28px;
+  }
 }
