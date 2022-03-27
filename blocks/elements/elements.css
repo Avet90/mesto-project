@@ -5,6 +5,22 @@
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
   gap: 20px 17px;
+  overflow: hidden;
+}
+@media screen and (max-width: 890px) {
+  .elements {
+    max-width: 90%;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    margin: 47px auto 0 auto;
+  }
+}
+@media screen and (max-width: 650px) {
+  .elements {
+    max-width: 90%;
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: 1fr;
+  }
 }
 @media screen and (max-width: 320px) {
   .elements {

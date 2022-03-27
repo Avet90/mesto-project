@@ -8,6 +8,7 @@
   cursor: pointer;
   justify-self: end;
   align-self: center;
+  padding: 0;
 }
 .profile__add-button:hover {
   opacity: 0.5;
@@ -15,15 +16,28 @@
   -webkit-transition: all 0.3s linear;
   -moz-transition: all 0.3s linear;
 }
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 890px) {
   .profile__add-button {
-    width: 282px;
-    background-image: url(../../../images/Vector2.svg);
+    background-size: 100px;
+    width: 100px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .profile__add-button {
+    width: 320px;
+    height: 60px;
+    background-image: url(../../../images/Plus.svg);
     background-color: initial;
     background-repeat: no-repeat;
     border: 2px solid #ffffff;
     background-position: center;
-    justify-self: auto;
+    justify-self: center;
     align-self: auto;
+    background-size: auto;
+  }
+}
+@media screen and (max-width: 320px) {
+  .profile__add-button {
+    width: 282px;
   }
 }

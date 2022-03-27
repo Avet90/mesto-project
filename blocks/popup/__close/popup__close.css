@@ -16,7 +16,7 @@
   -webkit-transition: all 0.3s linear;
   -moz-transition: all 0.3s linear;
 }
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 550px) {
   .popup__close {
     background-size: 20px;
     max-width: 20px;
