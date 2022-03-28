@@ -1,12 +1,11 @@
 .profile {
   margin: 40px auto 0 auto;
   display: grid;
-  grid-template-columns: 168px repeat(2, 1fr);
+  grid-template-columns: 120px repeat(2, 1fr);
 }
 @media screen and (max-width: 890px) {
   .profile {
     max-width: 90%;
-    grid-template-columns: 120px repeat(2, 1fr);
   }
 }
 @media screen and (max-width: 650px) {
