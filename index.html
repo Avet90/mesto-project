@@ -38,10 +38,7 @@
           />
           <div class="element__group">
             <h2 class="element__title">Карачаевск</h2>
-            <button
-              type="button"
-              class="element__vector element__vector_active"
-            ></button>
+            <button type="button" class="element__vector"></button>
           </div>
         </article>
         <article class="element">
@@ -52,20 +49,14 @@
           />
           <div class="element__group">
             <h2 class="element__title">Гора Эльбрус</h2>
-            <button
-              type="button"
-              class="element__vector element__vector_active"
-            ></button>
+            <button type="button" class="element__vector"></button>
           </div>
         </article>
         <article class="element">
           <img class="element__img" src="./images/dombai.jpg" alt="Домбай" />
           <div class="element__group">
             <h2 class="element__title">Домбай</h2>
-            <button
-              type="button"
-              class="element__vector element__vector_active"
-            ></button>
+            <button type="button" class="element__vector"></button>
           </div>
         </article>
         <article class="element">
@@ -76,20 +67,14 @@
           />
           <div class="element__group">
             <h2 class="element__title">Гора Арарат</h2>
-            <button
-              type="button"
-              class="element__vector element__vector_active"
-            ></button>
+            <button type="button" class="element__vector"></button>
           </div>
         </article>
         <article class="element">
           <img class="element__img" src="./images/kaskad.jpeg" alt="Каскад" />
           <div class="element__group">
             <h2 class="element__title">Каскад</h2>
-            <button
-              type="button"
-              class="element__vector element__vector_active"
-            ></button>
+            <button type="button" class="element__vector"></button>
           </div>
         </article>
         <article class="element">
@@ -100,10 +85,7 @@
           />
           <div class="element__group">
             <h2 class="element__title">Санкт-Петербург</h2>
-            <button
-              type="button"
-              class="element__vector element__vector_active"
-            ></button>
+            <button type="button" class="element__vector"></button>
           </div>
         </article>
       </section>
@@ -111,26 +93,24 @@
     <footer class="footer">
       <p class="footer__text">© 2022 Sarkisyan Avetik</p>
     </footer>
-    <div class="popup">
+    <div class="popup popup-edit">
       <!--popup_opened -->
       <div class="popup__container">
         <form class="popup__form" action="popup__form" name="popup-form">
           <h2 class="popup__heading">Редактировать профиль</h2>
           <input
-            class="popup__field"
+            class="popup__field popup__input_name"
             type="text"
             id="heading"
             name="heading"
             value="Жак-Ив Кусто"
-            required
           />
           <input
-            class="popup__field"
+            class="popup__field popup__input_info"
             type="text"
             id="subheading"
             name="subheading"
             value="Исследователь океана"
-            required
           />
           <button class="popup__button" type="submit" aria-label="Сохранить">
             Сохранить
@@ -143,5 +123,6 @@
         ></button>
       </div>
     </div>
+    <script src="script.js"></script>
   </body>
 </html>
