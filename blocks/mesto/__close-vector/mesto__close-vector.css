@@ -1,0 +1,42 @@
+.mesto__close-vector {
+	width: 32px;
+	height: 32px;
+	position: absolute;
+	right: -40px;
+	top: -40px;
+	border: none;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: url(../../../images/Close_Icon.svg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	cursor: pointer;
+}
+.mesto__close-vector:hover {
+	opacity: 0.6;
+	transition: all 0.3s linear;
+	-webkit-transition: all 0.3s linear;
+	-moz-transition: all 0.3s linear;
+  }
+
+@media screen and (max-width: 540px) {
+	.mesto__close-vector {
+		width: 25px;
+		height: 25px;
+		right: -20px;
+		top: -40px;
+	}
+	@media screen and (max-width: 320px) {
+		.mesto__close-vector {
+			width: 20px;
+			height: 20px;
+			right: 0px;
+			top: -36px;
+		}
+	}
+	@media screen and (max-width: 490px) {
+		.mesto__close-vector {
+			width: 20px;
+			height: 20px;
+			right: 0;
+		}
+	}
