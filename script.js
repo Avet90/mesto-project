@@ -18,8 +18,8 @@ const popupImgImage = document.querySelector('.popup-img__image')
 const popupImageTitle = document.querySelector('.popup-img__title')
 const popupTitle = document.querySelector('.popup__heading') 
 const popupContainer = document.querySelector('.popup__container') 
-const firstInput = document.querySelector('.popup__input_first'); 
-const secondInput = document.querySelector('.popup__input_second');
+const firstInput = document.querySelector('.popup__input_name'); 
+const secondInput = document.querySelector('.popup__input_info');
 const elementTemplate = document.querySelector('#element-template').content;
 
 
