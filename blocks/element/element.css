@@ -1,6 +1,7 @@
 .element {
-  display: grid;
-  max-height: 361px;
   border-radius: 10px;
-  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: white;
 }

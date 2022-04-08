@@ -1,0 +1,39 @@
+.mesto__add {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 0em;
+  margin-top: 48px;
+  width: 358px;
+  height: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  background-color: black;
+  color: white;
+  border: 0;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.mesto__add:hover {
+  opacity: 0.6;
+  transition: all 0.3s linear;
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+}
+
+@media screen and (max-width: 420px) {
+  .mesto__add {
+    max-width: 260px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .mesto__add {
+    max-width: 238px;
+    margin-top: 45px;
+    height: 46px;
+  }
+}
