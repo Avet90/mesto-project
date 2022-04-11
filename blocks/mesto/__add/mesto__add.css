@@ -1,39 +1,32 @@
 .mesto__add {
-  font-size: 18px;
+  border-radius: 2px;
+  background-repeat: round;
+  background-color: #000;
+  border: none;
+  cursor: pointer;
+  height: 50px;
+  color: #fff;
   font-style: normal;
   font-weight: 400;
+  font-size: 18px;
   line-height: 22px;
-  letter-spacing: 0em;
-  margin-top: 48px;
-  width: 358px;
-  height: 50px;
-  margin-left: auto;
-  margin-right: auto;
   text-align: center;
-  background-color: black;
-  color: white;
-  border: 0;
-  border-radius: 2px;
-  cursor: pointer;
+  margin-top: 48px;
+  margin-bottom: 35px;
+  padding: 0;
 }
-
 .mesto__add:hover {
-  opacity: 0.6;
+  opacity: 0.8;
   transition: all 0.3s linear;
   -webkit-transition: all 0.3s linear;
   -moz-transition: all 0.3s linear;
 }
-
-@media screen and (max-width: 420px) {
-  .mesto__add {
-    max-width: 260px;
-  }
-}
-
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 550px) {
   .mesto__add {
     max-width: 238px;
     margin-top: 45px;
-    height: 46px;
+    margin-bottom: 25px;
+    font-size: 14px;
+    line-height: 17px;
   }
 }

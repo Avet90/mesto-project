@@ -1,26 +1,14 @@
 .mesto__container {
-  width: 430px;
-  background-color: white;
-  position: relative;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  box-shadow: 0px 0px 25px 0px #00000026;
+  background-color: #fff;
+  width: 430px;
   border-radius: 10px;
-  padding-bottom: 37px;
-  align-self: center;
-  margin-left: auto;
-  margin-right: auto;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0px 0px 25px rgb(0 0 0 / 15%);
 }
-
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 550px) {
   .mesto__container {
-    max-width: 288px;
-  }
-}
-
-@media screen and (max-width: 450px) {
-  .mesto__container {
-    max-width: 90%;
+    max-width: 282px;
   }
 }
