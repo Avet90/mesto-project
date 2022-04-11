@@ -14,13 +14,13 @@
 }
 
 @media screen and (max-width: 320px) {
-  .popup-mesto__container {
+  .mesto__container {
     max-width: 288px;
   }
 }
 
 @media screen and (max-width: 450px) {
-  .popup-mesto__container {
+  .mesto__container {
     max-width: 90%;
   }
 }
