@@ -1,25 +1,27 @@
 const main = document.querySelector('.main');
-const editButton = document.querySelector('.profile__edit-button');
-const addButton = document.querySelector('.profile__add-button')
-const popupEdit = document.querySelector('.popup-edit');
-const popupClose = document.querySelector('.popup__close');
-const profileName = document.querySelector('.profile__title')
-const profileAbout = document.querySelector('.profile__subtitle')
-const editform = document.querySelector('.popup__form')
-const nameInput = document.querySelector('.popup__input_name');
-const aboutInput = document.querySelector('.popup__input_info');
+const profilePopup = document.querySelector('.popup-edit');
+const profilePopupName = document.querySelector('.profile__title');
+const profilePopupAbout = document.querySelector('.profile__subtitle');
+const profilePopupForm = document.querySelector('.popup__form');
+const profilePopupInputName = document.querySelector('.popup__input_name'); 
+const profilePopupInputInfo = document.querySelector('.popup__input_info');
+const profilePopupButtonEdit = document.querySelector('.profile__edit-button');
+const profilePopupButtonAdd = document.querySelector('.profile__add-button');
+const profilePopupButtonClose = document.querySelector('.popup__close');
+
 const elements = document.querySelector('.elements')
-const popupMesto = document.querySelector('.mesto')
-const closeButtonMesto = document.querySelector('.mesto__close-vector')
-const mestoForm = document.querySelector('.mesto__form')
-const popupImg = document.querySelector('.popup-img')
+
+const cardPopup = document.querySelector('.mesto')
+const cardPopupButtonClose = document.querySelector('.mesto__close-vector')
+const cardPopupForm = document.querySelector('.mesto__form')
+
+const imagePopup = document.querySelector('.popup-img')
 const closeButtonImg = document.querySelector('.popup-img__close-img')
 const popupImgImage = document.querySelector('.popup-img__image')
 const popupImageTitle = document.querySelector('.popup-img__title')
 const popupTitle = document.querySelector('.popup__heading') 
 const popupContainer = document.querySelector('.popup__container') 
-const firstInput = document.querySelector('.popup__input_name'); 
-const secondInput = document.querySelector('.popup__input_info');
+
 const elementTemplate = document.querySelector('#element-template').content;
 
 
@@ -98,36 +100,36 @@ function createCard(evt) {
   newName.value = '';
   newLink.value = '';
 
-  closePopup(popupMesto);
+  closePopup(cardPopup);
 }
 
 function editProfileInfo(evt) {
   evt.preventDefault();
-  profileName.textContent = firstInput.value;
-  profileAbout.textContent = secondInput.value;
+  profilePopupName.textContent = profilePopupInputName.value;
+  profilePopupAbout.textContent = profilePopupInputInfo.value;
 
-  closePopup(popupEdit);
+  closePopup(profilePopup);
 };
 
 function openPopupImage(imgLink, imgTitle) {
-  openPopup(popupImg);
+  openPopup(imagePopup);
   popupImgImage.setAttribute('src', imgLink);
   popupImageTitle.textContent = imgTitle;
 };
 
 
-editButton.addEventListener('click', () => {openPopup(popupEdit)});
+profilePopupButtonEdit.addEventListener('click', () => {openPopup(profilePopup)});
 
-popupClose.addEventListener('click', () => {closePopup(popupEdit)});
+profilePopupButtonClose.addEventListener('click', () => {closePopup(profilePopup)});
 
-editform.addEventListener('submit', editProfileInfo);
+profilePopupForm.addEventListener('submit', editProfileInfo);
 
-mestoForm.addEventListener('submit', createCard);
+cardPopupForm.addEventListener('submit', createCard);
 
-addButton.addEventListener('click', () => {openPopup(popupMesto)});
+profilePopupButtonAdd.addEventListener('click', () => {openPopup(cardPopup)});
 
-closeButtonMesto.addEventListener('click', () => {closePopup(popupMesto)});
+cardPopupButtonClose.addEventListener('click', () => {closePopup(cardPopup)});
 
-closeButtonImg.addEventListener('click', () => {closePopup(popupImg)});
+closeButtonImg.addEventListener('click', () => {closePopup(imagePopup)});
 
 initialCards.forEach(item => addElement(item.name, item.link));
