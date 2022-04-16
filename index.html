@@ -29,43 +29,13 @@
           aria-label="Добавлять"
         ></button>
       </section>
-      <div class="popup mesto">
-        <div class="mesto__container">
-           <button type="button" class="mesto__close-vector popup-close"></button>
-           <h2 class="mesto__title">Новое место</h2>
-           <form name="element__form" class="mesto__form">
-              <input type="text"  placeholder="Место"  name="name-input" class="mesto__input mesto__input_first" id="top-input" value="">
-              <input type="text" name="info-input" class="mesto__input mesto__input_second" id="bottom-input"
-              placeholder="Ссылка" value="">
-           <button class="mesto__add" type="submit">
-           Добавить
-           </button>
-           </form>
-        </div>
-     </div>
-     <div class="popup popup-img">
-      <div class="popup-img__container">
-         <button type="button" class="popup-img__close-img popup-close"></button>
-         <img class="popup-img__image">
-         <h2 class="popup-img__title"></h2>
-      </div>
-   </div>
       <section class="elements">
-        <template id = "element-template">
-          <div class="element">
-             <div class="element__block"><button class="element__korzina"></button>
-             <img class="element__img">
-            </div>
-             <div class="element__group">
-                <h2 class="element__title"></h2>
-                <button type="button" class="element__vector"></button>
-             </div>
-       </template>
       </section>
     </main>
     <footer class="footer">
       <p class="footer__text">© 2022 Sarkisyan Avetik</p>
     </footer>
+
     <div class="popup popup-edit">
       <div class="popup__container">
         <form class="popup__form" action="popup__form" name="popup-form">
@@ -95,6 +65,41 @@
         ></button>
       </div>
     </div>
+
+    <div class="popup mesto">
+      <div class="mesto__container">
+         <button type="button" class="mesto__close-vector popup-close"></button>
+         <form name="element__form" class="mesto__form">
+          <h2 class="mesto__title">Новое место</h2>
+            <input type="text"  placeholder="Место"  name="name-input" class="mesto__input mesto__input_first" id="top-input" value="">
+            <input type="text" name="info-input" class="mesto__input mesto__input_second" id="bottom-input"
+            placeholder="Ссылка" value="">
+         <button class="mesto__add" type="submit">
+         Добавить
+         </button>
+         </form>
+      </div>
+   </div>
+
+   <div class="popup popup-img">
+    <div class="popup-img__container">
+       <button type="button" class="popup-img__close-img popup-close"></button>
+       <img class="popup-img__image" alt="">
+       <h2 class="popup-img__title"></h2>
+    </div>
+ </div>
+
+ <template id = "element-template">
+  <div class="element">
+     <div class="element__block"><button class="element__korzina"></button>
+     <img class="element__img" alt="">
+    </div>
+     <div class="element__group">
+        <h2 class="element__title"></h2>
+        <button type="button" class="element__vector"></button>
+     </div>
+ </template>
+
     <script src="script.js"></script>
   </body>
 </html>

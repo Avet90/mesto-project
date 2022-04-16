@@ -8,7 +8,7 @@
   background-image: url(../../../images/urna.svg);
   position: absolute;
   top: 20px;
-  left: 244px;
+  right: 20px;
   background-size: cover;
   cursor: pointer;
 }
@@ -18,34 +18,4 @@
   transition: all 0.3s linear;
   -webkit-transition: all 0.3s linear;
   -moz-transition: all 0.3s linear;
-}
-
-@media screen and (max-width: 910px) {
-  .element__korzina {
-    left: 235px;
-  }
-}
-
-@media screen and (max-width: 680px) {
-  .element__korzina {
-    left: 370px;
-  }
-}
-
-@media screen and (max-width: 450px) {
-  .element__korzina {
-    left: 300px;
-  }
-}
-
-@media screen and (max-width: 380px) {
-  .element__korzina {
-    left: 250px;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .element__korzina {
-    left: 240px;
-  }
 }
