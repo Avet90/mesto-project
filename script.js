@@ -9,18 +9,19 @@ const profilePopupButtonEdit = document.querySelector('.profile__edit-button');
 const profilePopupButtonAdd = document.querySelector('.profile__add-button');
 const profilePopupButtonClose = document.querySelector('.popup__close');
 
-const elements = document.querySelector('.elements')
-
 const cardPopup = document.querySelector('.mesto')
+const cardPopupContainer = document.querySelector('.elements')
 const cardPopupButtonClose = document.querySelector('.mesto__close-vector')
 const cardPopupForm = document.querySelector('.mesto__form')
+const cardPopupNewName = document.querySelector('.mesto__input_first');
+const cardPopupNewLink = document.querySelector('.mesto__input_second');
+
+
 
 const imagePopup = document.querySelector('.popup-img')
-const closeButtonImg = document.querySelector('.popup-img__close-img')
-const popupImgImage = document.querySelector('.popup-img__image')
-const popupImageTitle = document.querySelector('.popup-img__title')
-const popupTitle = document.querySelector('.popup__heading') 
-const popupContainer = document.querySelector('.popup__container') 
+const imagePopupButtonClose = document.querySelector('.popup-img__close-img')
+const imagePopupPicture = document.querySelector('.popup-img__image')
+const imagePopupTitle = document.querySelector('.popup-img__title')
 
 const elementTemplate = document.querySelector('#element-template').content;
 
@@ -52,57 +53,62 @@ const initialCards = [
   }
 ]; 
 
-
-let hearts = document.getElementsByClassName("element__vector");
-for (let heart of hearts) {
-  heart.addEventListener("click", () => heart.classList.toggle('element__vector_active'));
-};
-
+// Функция открытия попапа
 function openPopup(popup) {
   popup.classList.add('popup_opened');
 };
 
+// Функция закрытия попапа
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
 };
 
+// Функция создание карточки
 function addElement(elementName, elementLink) {
   const elementElement = elementTemplate.querySelector('.element').cloneNode(true);
-  const hearts = elementElement.getElementsByClassName("element__vector");
+  const cardPopupButtonHeart = elementElement.getElementsByClassName("element__vector");
   const elementImg = elementElement.querySelector('.element__img');
 
+  // Наполняем содержимым
   elementElement.querySelector('.element__title').textContent = elementName;
   elementElement.querySelector('.element__img').src = elementLink;
   elementElement.querySelector('.element__img').alt = elementName;
-  elements.prepend(elementElement);
 
-  for (let heart of hearts) {
-    heart.addEventListener("click", () => heart.classList.toggle('element__vector_active'));
+  for (let heart of cardPopupButtonHeart) {
+    heart.addEventListener("click", () => heart.classList.toggle('element__vector_active')); //Слушатель Like
   };
 
   elementImg.addEventListener('click', () => {
-    openPopupImage(elementLink, elementName)
+    openPopupImage(elementLink, elementName)   //Слушатель открытия картинки
   });
 
   elementElement.querySelector('.element__korzina').addEventListener('click', function (evt) {
-    evt.target.closest('.element').remove();
+    evt.target.closest('.element').remove(); // Слушатель кнопку удаления
   });
-
+  return elementElement;
 };
 
+
+// Функция отрисовки карточки
+function renderCard(title, link) {
+  cardPopupContainer.prepend(addElement(title, link));
+}
+
+
+// Функция добавление карточки
 function createCard(evt) {
   evt.preventDefault();
-  const newName = document.querySelector('.mesto__input_first');
-  const newLink = document.querySelector('.mesto__input_second');
 
-  addElement(newName.value, newLink.value);
+  renderCard(cardPopupNewName.value, cardPopupNewLink.value);
 
-  newName.value = '';
-  newLink.value = '';
+  cardPopupNewName.value = '';
+  cardPopupNewLink.value = '';
 
   closePopup(cardPopup);
 }
 
+
+// Функция подгрузки информации о пользователе в соответствующие поля
 function editProfileInfo(evt) {
   evt.preventDefault();
   profilePopupName.textContent = profilePopupInputName.value;
@@ -111,10 +117,13 @@ function editProfileInfo(evt) {
   closePopup(profilePopup);
 };
 
-function openPopupImage(imgLink, imgTitle) {
+
+// Функция открытие картинки
+ function openPopupImage(imgLink, imgTitle) {
+  imagePopupPicture.setAttribute('src', imgLink);
+  imagePopupTitle.textContent = imgTitle;
+
   openPopup(imagePopup);
-  popupImgImage.setAttribute('src', imgLink);
-  popupImageTitle.textContent = imgTitle;
 };
 
 
@@ -130,6 +139,6 @@ profilePopupButtonAdd.addEventListener('click', () => {openPopup(cardPopup)});
 
 cardPopupButtonClose.addEventListener('click', () => {closePopup(cardPopup)});
 
-closeButtonImg.addEventListener('click', () => {closePopup(imagePopup)});
+imagePopupButtonClose.addEventListener('click', () => {closePopup(imagePopup)});
 
-initialCards.forEach(item => addElement(item.name, item.link));
+initialCards.forEach(item => renderCard(item.name, item.link));
