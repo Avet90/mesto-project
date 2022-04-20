@@ -17,3 +17,7 @@
     max-width: 238px;
   }
 }
+
+.popup__item:focus {
+  outline-color: #fff;
+}

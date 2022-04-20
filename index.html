@@ -13,15 +13,17 @@
     </header>
     <main class="content">
       <section class="profile">
-        <img class="profile__avatar" src="./images/image.jpg" alt="Аватар" />
+        <div class="profile__image">
+          <img class="profile__avatar" src="./images/image.jpg" alt="Аватар" />
+        </div>
         <div class="profile__info">
           <h1 class="profile__title">Жак-Ив Кусто</h1>
-          <p class="profile__subtitle">Исследователь океана</p>
           <button
             type="button"
             class="profile__edit-button"
             aria-label="Редактировать"
           ></button>
+          <p class="profile__subtitle">Исследователь океана</p>
         </div>
         <button
           class="profile__add-button"
@@ -29,8 +31,8 @@
           aria-label="Добавлять"
         ></button>
       </section>
-      <section class="elements">
-      </section>
+
+      <section class="elements"></section>
     </main>
     <footer class="footer">
       <p class="footer__text">© 2022 Sarkisyan Avetik</p>
@@ -68,37 +70,50 @@
 
     <div class="popup mesto">
       <div class="mesto__container">
-         <button type="button" class="mesto__close-vector popup-close"></button>
-         <form name="element__form" class="mesto__form">
+        <button type="button" class="mesto__close-vector popup-close"></button>
+        <form name="element__form" class="mesto__form">
           <h2 class="mesto__title">Новое место</h2>
-            <input type="text"  placeholder="Место"  name="name-input" class="mesto__input mesto__input_first" id="top-input" value="">
-            <input type="text" name="info-input" class="mesto__input mesto__input_second" id="bottom-input"
-            placeholder="Ссылка" value="">
-         <button class="mesto__add" type="submit">
-         Добавить
-         </button>
-         </form>
+          <input
+            type="text"
+            placeholder="Место"
+            name="name-input"
+            class="mesto__input mesto__input_first"
+            id="top-input"
+            value=""
+          />
+          <input
+            type="text"
+            name="info-input"
+            class="mesto__input mesto__input_second"
+            id="bottom-input"
+            placeholder="Ссылка"
+            value=""
+          />
+          <button class="mesto__add" type="submit">Добавить</button>
+        </form>
       </div>
-   </div>
-
-   <div class="popup popup-img">
-    <div class="popup-img__container">
-       <button type="button" class="popup-img__close-img popup-close"></button>
-       <img class="popup-img__image" alt="">
-       <h2 class="popup-img__title"></h2>
     </div>
- </div>
 
- <template id = "element-template">
-  <div class="element">
-     <div class="element__block"><button class="element__korzina"></button>
-     <img class="element__img" alt="">
+    <div class="popup popup-img">
+      <div class="popup-img__container">
+        <button type="button" class="popup-img__close-img popup-close"></button>
+        <img class="popup-img__image" alt="" />
+        <h2 class="popup-img__title"></h2>
+      </div>
     </div>
-     <div class="element__group">
-        <h2 class="element__title"></h2>
-        <button type="button" class="element__vector"></button>
-     </div>
- </template>
+
+    <template id="element-template">
+      <div class="element">
+        <div class="element__block">
+          <button class="element__korzina"></button>
+          <img class="element__img" alt="" />
+        </div>
+        <div class="element__group">
+          <h2 class="element__title"></h2>
+          <button type="button" class="element__vector"></button>
+        </div>
+      </div>
+    </template>
 
     <script src="script.js"></script>
   </body>

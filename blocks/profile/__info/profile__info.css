@@ -1,23 +1,16 @@
 .profile__info {
-  display: grid;
-  max-width: 336px;
-  position: relative;
-  align-content: space-evenly;
+  margin-left: 30px;
+  width: 337px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
 }
-@media screen and (max-width: 890px) {
+
+@media screen and (max-width: 700px) {
   .profile__info {
-    justify-content: space-evenly;
-  }
-}
-@media screen and (max-width: 650px) {
-  .profile__info {
-    max-width: 650px;
-    justify-items: center;
+    width: 282px;
     margin: 0;
-  }
-}
-@media screen and (max-width: 320px) {
-  .profile__info {
-    min-width: 282px;
+    justify-content: center;
   }
 }
