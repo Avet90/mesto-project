@@ -1,5 +1,5 @@
 .mesto__input {
-  border: none;
+  border: 0;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -16,4 +16,8 @@
   .mesto__input {
     max-width: 238px;
   }
+}
+
+.popup__item:focus {
+  outline-color: #fff;
 }
