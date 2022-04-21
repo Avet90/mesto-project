@@ -18,6 +18,8 @@ const cardPopupNewLink = document.querySelector('.mesto__input_second');
 
 const imagePopup = document.querySelector('.popup-img')
 const imagePopupButtonClose = document.querySelector('.popup-img__close-img')
+const imagePopupTitle = imagePopup.querySelector(".popup-img__title");
+const imagePopupLink = imagePopup.querySelector(".popup-img__image");
 
 const elementTemplate = document.querySelector('#element-template').content;
 
@@ -54,14 +56,6 @@ function activatesLike(evt) {
   evt.target.classList.toggle("element__vector_active");
 }
 
-// Функция удаления карточки
-function deleteCard() {
-  const listItem = cardPopupContainer
-  .querySelector(".element__korzina")
-  .closest('.element');
-listItem.remove();
-}
-
 // Функция открытия попапа
 function openPopup(popup) {
   popup.classList.add('popup_opened');
@@ -75,19 +69,23 @@ function closePopup(popup) {
 // Функция создание карточки
 function addElement(title, link) {
   const elementElement = elementTemplate.querySelector('.element').cloneNode(true);
+  const elementImage = elementElement.querySelector('.element__img');
 
   // Наполняем содержимым
   elementElement.querySelector('.element__title').textContent = title;
-  elementElement.querySelector('.element__img').src = link;
-  elementElement.querySelector('.element__img').alt = title;
+  elementImage.src = link;
+  elementImage.alt = title;
 
 
-  elementElement.querySelector('.element__korzina').addEventListener('click', deleteCard); // Слушатель кнопку удаления
+  elementElement.querySelector('.element__korzina').addEventListener('click', function (evt) { 
+
+    evt.target.closest('.element').remove(); // Слушатель кнопку удаления 
+
+  });
 
   elementElement.querySelector('.element__vector').addEventListener("click", activatesLike); //Слушатель кнопка сердце
 
-  elementElement
-    .querySelector('.element__img')
+  elementImage
     .addEventListener("click", () => { 
       openPopupImage(title, link); 
   }); //Слушатель для открытия Картинка
@@ -137,13 +135,10 @@ profilePopupForm.addEventListener("submit", sendingFormProfile);
 
 // Функция открытие картинки
 function openPopupImage(title, link) { 
-  const imgTitle = imagePopup.querySelector(".popup-img__title");
-  const imgLink = imagePopup.querySelector(".popup-img__image");
-  imgTitle.textContent = title;
-  imgLink.src = link;
-  imgLink.alt = title;
+  imagePopupTitle.textContent = title;
+  imagePopupLink.src = link;
+  imagePopupLink.alt = title;
   openPopup(imagePopup);
-  
 }
 
 
