@@ -70,7 +70,11 @@
 
     <div class="popup mesto">
       <div class="mesto__container">
-        <button type="button" class="mesto__close-vector popup-close"></button>
+        <button
+          class="mesto__close-vector popup__close"
+          type="button"
+          aria-label="Закрыть"
+        ></button>
         <form name="element__form" class="mesto__form">
           <h2 class="mesto__title">Новое место</h2>
           <input
@@ -96,8 +100,12 @@
 
     <div class="popup popup-img">
       <div class="popup-img__container">
-        <button type="button" class="popup-img__close-img popup-close"></button>
-        <img class="popup-img__image" alt="" />
+        <button
+          class="popup__close popup-img__close-img"
+          type="button"
+          aria-label="Сохранить"
+        ></button>
+        <img class="popup-img__image" alt="img" />
         <h2 class="popup-img__title"></h2>
       </div>
     </div>
