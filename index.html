@@ -40,23 +40,46 @@
 
     <div class="popup popup-edit">
       <div class="popup__container">
-        <form class="popup__form" action="popup__form" name="popup-form">
-          <h2 class="popup__heading">Редактировать профиль</h2>
-          <input
-            class="popup__field popup__input_name"
-            type="text"
-            id="heading"
-            name="heading"
-            value="Жак-Ив Кусто"
-          />
-          <input
-            class="popup__field popup__input_info"
-            type="text"
-            id="subheading"
-            name="subheading"
-            value="Исследователь океана"
-          />
-          <button class="popup__button" type="submit" aria-label="Сохранить">
+        <form
+          class="popup__form form"
+          action="popup__form"
+          name="popup-form"
+          novalidate
+        >
+          <label class="form__field">
+            <h2 class="popup__heading">Редактировать профиль</h2>
+            <input
+              class="popup__field popup__input_name form__input"
+              type="text"
+              placeholder="Имя"
+              id="name-input"
+              name="heading"
+              value="Жак-Ив Кусто"
+              required
+              minlength="2"
+              maxlength="40"
+            />
+            <span class="form__input-error name-input-error"></span>
+          </label>
+          <label class="form__field">
+            <input
+              class="popup__field popup__input_info form__input"
+              type="text"
+              placeholder="О себе"
+              id="info-input"
+              name="subheading"
+              value="Исследователь океана"
+              required
+              minlength="2"
+              maxlength="200"
+            />
+            <span class="form__input-error info-input-error"></span>
+          </label>
+          <button
+            class="popup__button button"
+            type="submit"
+            aria-label="Сохранить"
+          >
             Сохранить
           </button>
         </form>
@@ -70,34 +93,57 @@
 
     <div class="popup mesto">
       <div class="mesto__container">
-        <button type="button" class="mesto__close-vector popup-close"></button>
-        <form name="element__form" class="mesto__form">
+        <button
+          class="mesto__close-vector popup__close"
+          type="button"
+          aria-label="Закрыть"
+        ></button>
+        <form class="mesto__form form" name="element__form" novalidate>
           <h2 class="mesto__title">Новое место</h2>
-          <input
-            type="text"
-            placeholder="Место"
-            name="name-input"
-            class="mesto__input mesto__input_first"
-            id="top-input"
-            value=""
-          />
-          <input
-            type="text"
-            name="info-input"
-            class="mesto__input mesto__input_second"
-            id="bottom-input"
-            placeholder="Ссылка"
-            value=""
-          />
-          <button class="mesto__add" type="submit">Добавить</button>
+          <label>
+            <input
+              type="text"
+              placeholder="Место"
+              name="name_input"
+              class="mesto__input mesto__input_first form__input"
+              id="top-input"
+              value=""
+              required
+              minlength="2"
+              maxlength="30"
+            />
+            <span class="form__input-error top-input-error"></span>
+          </label>
+          <label>
+            <input
+              type="url"
+              name="info_input"
+              class="mesto__input mesto__input_second form__input"
+              id="bottom-input"
+              placeholder="Ссылка"
+              value=""
+              required
+            />
+            <span class="form__input-error bottom-input-error"></span>
+          </label>
+          <button
+            class="mesto__add button form_submit form_button"
+            type="button"
+          >
+            Добавить
+          </button>
         </form>
       </div>
     </div>
 
     <div class="popup popup-img">
       <div class="popup-img__container">
-        <button type="button" class="popup-img__close-img popup-close"></button>
-        <img class="popup-img__image" alt="" />
+        <button
+          class="popup__close popup-img__close-img"
+          type="button"
+          aria-label="Сохранить"
+        ></button>
+        <img class="popup-img__image" alt="img" />
         <h2 class="popup-img__title"></h2>
       </div>
     </div>
