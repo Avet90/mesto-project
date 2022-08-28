@@ -20,6 +20,7 @@ const cardPopupButtonClose = document.querySelector('.mesto__close-vector')
 const cardPopupForm = document.querySelector('.mesto__form')
 const cardPopupNewName = document.querySelector('.mesto__input_first');
 const cardPopupNewLink = document.querySelector('.mesto__input_second');
+const cardAddButton = document.querySelector('.mesto__add');
 const cardForm = document.forms.element__form;
 
 const imagePopup = document.querySelector('.popup-img')
@@ -104,14 +105,60 @@ function renderCard(title, link) {
   cardPopupContainer.prepend(addElement(title, link));
 }
 
-// Функция добавление карточки
+// Функция добавление карточки Mesto
 function createCard(evt) {
   evt.preventDefault();
   renderCard(cardPopupNewName.value, cardPopupNewLink.value);
   closePopup(cardPopup);
   cardForm.reset();
+};
+
+////////////
+
+const showInputError = (formElement, inputElement, errorMessage) => {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  inputElement.classList.add('form__input_type_error');
+  errorElement.textContent = errorMessage;
+  errorElement.classList.add('form__input-error_active');
+};
+
+const hideInputError = (formElement, inputElement) => {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  inputElement.classList.remove('form__input_type_error');
+  errorElement.classList.remove('form__input-error_active');
+  errorElement.textContent = '';
 }
 
+const checkInputValidity = (formElement, inputElement) => {
+  if(!inputElement.validity.valid) {
+    showInputError(formElement, inputElement.validationMessage);
+  } else {
+    hideInputError(formElement, inputElement);
+  };
+};
+
+const setEventListeners = (formElement) => {
+  const inputList = Array.from(formElement.querySelectorAll('.form__input'));
+  inputList.forEach((inputElement) => {
+    inputElement.addEventListener('input', function (){
+      checkInputValidity(formElement, inputElement);
+    });
+  });
+};
+
+const enableValidation = () => {
+  const formList = Array.from(document.querySelectorAll('.form'));
+  formList.forEach((formElement) => {
+    formElement.addEventListener('submit', (evt) => {
+      evt.preventDefault();
+    });
+    setEventListeners(formElement);
+  });
+};
+enableValidation();
+
+///////////
+///////////
 
 // editProfile
 function loadInfoPopupEdit() {
@@ -133,6 +180,7 @@ function sendingFormProfile(evt) {
 
 profilePopupForm.addEventListener("submit", sendingFormProfile);
 
+///////
 
 // Функция открытие картинки
 function openPopupImage(title, link) { 
@@ -169,3 +217,6 @@ pageMain.addEventListener('click', function(evt) {
     imagePopup.classList.remove('popup_opened');
   }
 });
+
+
+

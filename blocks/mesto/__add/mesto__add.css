@@ -1,7 +1,7 @@
 .mesto__add {
   border-radius: 2px;
   background-repeat: round;
-  background-color: #000;
+  background: #000;
   border: none;
   cursor: pointer;
   height: 50px;
