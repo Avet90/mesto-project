@@ -58,6 +58,8 @@
               required
               minlength="2"
               maxlength="40"
+              pattern="^[a-zA-Zа-яА-Я\s\-]+$"
+              data-error-message="Разрешены латинские и кириллические буквы, знаки дефиса и пробела"
             />
             <span class="form__input-error name-input-error"></span>
           </label>
@@ -72,11 +74,13 @@
               required
               minlength="2"
               maxlength="200"
+              pattern="^[a-zA-Zа-яА-Я\s\-]+$"
+              data-error-message="Разрешены латинские и кириллические буквы, знаки дефиса и пробела"
             />
             <span class="form__input-error info-input-error"></span>
           </label>
           <button
-            class="popup__button button"
+            class="popup__button button form__submit"
             type="submit"
             aria-label="Сохранить"
           >
@@ -111,6 +115,8 @@
               required
               minlength="2"
               maxlength="30"
+              pattern="^[a-zA-Zа-яА-Я\s\-]+$"
+              data-error-message="Разрешены латинские и кириллические буквы, знаки дефиса и пробела"
             />
             <span class="form__input-error top-input-error"></span>
           </label>
@@ -127,8 +133,9 @@
             <span class="form__input-error bottom-input-error"></span>
           </label>
           <button
-            class="mesto__add button form_submit form_button"
-            type="button"
+            class="mesto__add button form__submit"
+            type="submit"
+            aria-label="Добавить"
           >
             Добавить
           </button>
