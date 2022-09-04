@@ -13,6 +13,14 @@ const profilePopupName = document.querySelector('.profile__title');
 const cardPopupForm = document.querySelector('.mesto__form')
 const profilePopupButtonAdd = document.querySelector('.profile__add-button');
 const pageMain = document.querySelector('.page');
+const cardPopupContainer = document.querySelector('.elements')
+const cardPopupNewName = document.querySelector('.mesto__input_first');
+const cardPopupNewLink = document.querySelector('.mesto__input_second');
+const imagePopupLink = imagePopup.querySelector(".popup-img__image");
+
+
+
+
 const initialCards = [
     {
       name: 'Архыз',
@@ -47,5 +55,6 @@ const initialCards = [
 export {cardForm, imagePopup, popupMain, cardPopup, elementTemplate, 
     profilePopupInputName, profilePopupInputInfo, profilePopupAbout, 
     profilePopupForm, profilePopupButtonEdit, profilePopup, profilePopupName, 
-    initialCards, cardPopupForm, profilePopupButtonAdd, pageMain, 
+    initialCards, cardPopupForm, profilePopupButtonAdd, pageMain, cardPopupContainer, cardPopupNewName, 
+    cardPopupNewLink, imagePopupLink, 
 }
