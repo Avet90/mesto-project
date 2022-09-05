@@ -1,7 +1,7 @@
-import {openPopupImage, closePopup } from './modal.js'
+import {openPopupImage, closePopup} from './modal.js'
 import {cardPopup, cardForm, elementTemplate, cardPopupContainer, 
-    cardPopupNewName, cardPopupNewLink } from './constant.js'
-
+    cardPopupNewName, cardPopupNewLink } from './constant.js' 
+import { enableValidation } from "./validate";
 // Функция создание карточки
 function addElement(title, link) {
     const elementElement = elementTemplate.querySelector('.element').cloneNode(true);
@@ -43,6 +43,14 @@ function createCard(evt) {
     evt.preventDefault();
     renderCard(cardPopupNewName.value, cardPopupNewLink.value);
     closePopup(cardPopup);
-    cardForm.reset();
+    cardForm.reset()
+    enableValidation({
+        formSelector: '.form',
+        inputSelector: '.form__input',
+        submitButtonSelector: '.form__submit',
+        inactiveButtonClass: 'button_inactive',
+        inputErrorClass: 'form__input_type_error',
+        errorClass: 'form__input-error_active'
+    });
 };
 export{addElement, renderCard, createCard}
