@@ -27,11 +27,3 @@ cardPopupForm.addEventListener('submit', createCard);
 profilePopupButtonAdd.addEventListener('click', () => {openPopup(cardPopup)});
 
 initialCards.forEach(item => renderCard(item.name, item.link));
-
-// Слушатель на закрытия popup
-document.addEventListener('click', function(evt) {
-  if (evt.target.classList.contains('popup__close') || evt.target.classList.contains('popup')){
-    cardForm.reset();
-    closePopup(document.querySelector('.popup_opened'));
-    }
-});

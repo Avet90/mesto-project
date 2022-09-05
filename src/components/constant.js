@@ -17,9 +17,8 @@ const cardPopupContainer = document.querySelector('.elements')
 const cardPopupNewName = document.querySelector('.mesto__input_first');
 const cardPopupNewLink = document.querySelector('.mesto__input_second');
 const imagePopupLink = imagePopup.querySelector(".popup-img__image");
-
-
-
+const imagePopupButtonClose = document.querySelector('.popup-img__close-img')
+const imagePopupTitle = imagePopup.querySelector(".popup-img__title");
 
 const initialCards = [
     {
@@ -56,5 +55,5 @@ export {cardForm, imagePopup, popupMain, cardPopup, elementTemplate,
     profilePopupInputName, profilePopupInputInfo, profilePopupAbout, 
     profilePopupForm, profilePopupButtonEdit, profilePopup, profilePopupName, 
     initialCards, cardPopupForm, profilePopupButtonAdd, pageMain, cardPopupContainer, cardPopupNewName, 
-    cardPopupNewLink, imagePopupLink, 
+    cardPopupNewLink, imagePopupLink, imagePopupTitle, imagePopupButtonClose,
 }

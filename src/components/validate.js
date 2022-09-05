@@ -12,7 +12,7 @@ const hideInputError = (formElement, inputElement, selectorsConfig) => {
     errorElement.classList.remove(selectorsConfig.errorClass);
     errorElement.textContent = '';
 };
-///
+
 const checkInputValidity = (formElement, inputElement, selectorsConfig) => {
     if (inputElement.validity.patternMismatch) {
       inputElement.setCustomValidity(inputElement.dataset.errorMessage);
@@ -59,6 +59,7 @@ const enableValidation = (selectorsConfig) => {
     const formList = Array.from(document.querySelectorAll(selectorsConfig.formSelector));
     formList.forEach((formElement) => {
       formElement.addEventListener('submit', (evt) => {
+        setEventListeners(formElement, selectorsConfig);
         evt.preventDefault();
       });
       setEventListeners(formElement, selectorsConfig);
