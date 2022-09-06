@@ -59,11 +59,20 @@ const enableValidation = (selectorsConfig) => {
     const formList = Array.from(document.querySelectorAll(selectorsConfig.formSelector));
     formList.forEach((formElement) => {
       formElement.addEventListener('submit', (evt) => {
-        setEventListeners(formElement, selectorsConfig);
         evt.preventDefault();
       });
       setEventListeners(formElement, selectorsConfig);
     });
 };
+
+// const resetForm = (form, obj) => {
+//   const inputs = getInputs(form, obj);
+//   inputs.forEach(input => {
+//     hideInputError(form, input, obj);
+//   });
+//   toggleButtonState(form, querySelector(obj.submitButtonSelector), inputs, obj)
+// };
+
+
 export{showInputError, hideInputError, checkInputValidity, hasInvalidInput, 
     toggleButtonState, setEventListeners, enableValidation}
