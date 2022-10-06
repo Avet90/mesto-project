@@ -1,6 +1,21 @@
 import {openPopupImage, closePopup} from './modal.js'
 import {cardPopup, cardForm, elementTemplate, cardPopupContainer, 
     cardPopupNewName, cardPopupNewLink } from './constant.js' 
+
+//Функция загрузки карточки
+function loadCards() {
+  fetch('https://mesto.nomoreparties.co/v1/plus-cohort-15/cards/', {
+    headers: {
+      authorization: 'ba6097cc-c5ae-47eb-ae48-050b54337db7'
+    }
+  })
+  .then(res => res.json())
+  .then((data) => {
+    const initial = data;
+    initial.forEach(item => renderCard(item.name, item.link));
+  });
+};
+
 // Функция создание карточки
 function addElement(title, link) {
     const elementElement = elementTemplate.querySelector('.element').cloneNode(true);
@@ -40,6 +55,17 @@ function renderCard(title, link) {
 // Функция добавление карточки Mesto
 function createCard(evt) {
     evt.preventDefault();
+    fetch('https://mesto.nomoreparties.co/v1/plus-cohort-15/cards/', {
+      method: 'POST',
+      headers: {
+        authorization: 'c56e30dc-2883-4270-a59e-b2f7bae969c6',
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: '',
+        link: '',
+      })
+    })
     renderCard(cardPopupNewName.value, cardPopupNewLink.value);
     closePopup(cardPopup);
     cardForm.reset();
@@ -52,5 +78,5 @@ function shutdownButton() {
     buttonMesto.classList.add('button_inactive');
   };
 
-export{addElement, renderCard, createCard, shutdownButton}
+export{addElement, renderCard, createCard, shutdownButton, loadCards}
  

@@ -17,20 +17,16 @@
     <main class="content">
       <section class="profile">
         <div class="profile__image">
-          <img
-            class="profile__avatar"
-            src="<%=require('./images/image.jpg')%>"
-            alt="Аватар"
-          />
+          <img class="profile__avatar" id="avatar" src="" alt="Аватар" />
         </div>
         <div class="profile__info">
-          <h1 class="profile__title">Жак-Ив Кусто</h1>
+          <h1 class="profile__title"></h1>
           <button
             type="button"
             class="profile__edit-button"
             aria-label="Редактировать"
           ></button>
-          <p class="profile__subtitle">Исследователь океана</p>
+          <p class="profile__subtitle"></p>
         </div>
         <button
           class="profile__add-button"
@@ -76,8 +72,8 @@
               required
               minlength="2"
               maxlength="200"
-              pattern="^[a-zA-Zа-яА-Я\s\-]+$"
-              data-error-message="Разрешены латинские и кириллические буквы, знаки дефиса и пробела"
+              pattern="^[a-zA-Zа-яА-Я\s\D\-]+$"
+              data-error-message="Разрешены латинские и кириллические буквы, а также знаки припенания"
             />
             <span class="form__input-error info-input-error"></span>
           </label>

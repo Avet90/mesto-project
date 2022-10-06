@@ -1,8 +1,8 @@
 import {cardPopup, profilePopup, profilePopupButtonEdit, 
-        profilePopupForm, initialCards, cardPopupForm, profilePopupButtonAdd} from "./constant.js";
+        profilePopupForm, cardPopupForm, profilePopupButtonAdd} from "./constant.js";
 import {openPopup} from "./modal.js";
-import {renderCard, createCard, shutdownButton} from "./card.js";
-import {loadInfoPopupEdit, sendingFormProfile } from "./profileEdite.js";
+import {renderCard, createCard, shutdownButton, loadCards} from "./card.js";
+import {loadInfoPopupEdit, sendingFormProfile, loadInfoProfile} from "./profileEdite.js";
 import {enableValidation} from "./validate.js";
 import '/src/pages/index.css';
 
@@ -28,4 +28,8 @@ profilePopupButtonAdd.addEventListener('click', () => {openPopup(cardPopup)
   shutdownButton();
 });
 
-initialCards.forEach(item => renderCard(item.name, item.link));
+loadCards();
+
+loadInfoProfile();
+
+
