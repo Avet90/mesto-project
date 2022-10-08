@@ -68,9 +68,6 @@ export function putLike(id){
       headers: config.headers,
     })
     .then(checkResponse)
-    .then((data)=>{
-        console.log(data);
-    })
 }
 
 export function deleteLike(id){
@@ -79,4 +76,15 @@ export function deleteLike(id){
       headers: config.headers,
     })
     .then(checkResponse)
+}
+
+export function patchUserAvatar(link) {
+  return fetch(`${config.baseUrl}/users/me/avatar`, {
+    method: 'PATCH',
+    headers: config.headers,
+    body: JSON.stringify({
+      avatar: link
+    })
+  })
+  .then(checkResponse)
 }
