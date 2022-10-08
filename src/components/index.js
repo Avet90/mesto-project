@@ -1,8 +1,8 @@
-import {cardPopup, profilePopup, profilePopupButtonEdit, profilePopupForm, cardPopupForm, profilePopupButtonAdd, profilePopupInputName, profilePopupInputInfo, profilePopupAbout, profilePopupName, profilePopupAvatar, cardForm, elementTemplate, cardPopupContainer, cardPopupNewName, cardPopupNewLink, deletePopup, deleteFormElement} from "./constant.js";
+import {cardPopup, profilePopup, profilePopupButtonEdit, profilePopupForm, cardPopupForm, profilePopupButtonAdd, profilePopupInputName, profilePopupInputInfo, profilePopupAbout, profilePopupName, profilePopupAvatar, elementTemplate, cardPopupContainer, cardPopupNewName, cardPopupNewLink, deletePopup, deleteFormElement, avatarOpenBtn, avatarPopup, avatarPopupLink, avatarFormElement} from "./constant.js";
 import {openPopup, closePopup, } from "./modal.js";
-import {shutdownButton, renderCard} from "./card.js";
+import {shutdownButton, renderCard, redrawLikeCounter} from "./card.js";
 import {enableValidation} from "./validate.js";
-import {getUserInfo, patchUserInfo, getCards, postCard, deleteCard, putLike, deleteLike} from './api.js';
+import {getUserInfo, patchUserInfo, getCards, postCard, deleteCard, putLike, deleteLike, patchUserAvatar} from './api.js';
 import '/src/pages/index.css';
 
 let userId;
@@ -74,6 +74,51 @@ function handleDeleteElementFormSubmit(evt){
     });
 }
 
+function handleAvatarFormSubmit(evt){
+  evt.preventDefault();
+  evt.submitter.textContent = 'Сохранение...'
+  const promisePatchUserAvatar = patchUserAvatar(avatarPopupLink.value)
+    .then((result) => {
+      profilePopupAvatar.src = result.avatar;
+      closePopup(avatarPopup);
+    })
+    .catch((err) => {
+      console.error('Ошибка при загрузке нового аватара.', err);
+    })
+    .finally(() => {
+      evt.submitter.textContent = 'Сохранить'
+      evt.target.reset();
+    });
+}
+
+//Функция добавления Like
+export function handlePutLike(cardId) {
+  putLike(cardId)
+  .then((result)=>{
+    document.getElementById(cardId).querySelector('.element__vector').classList.add('element__vector_active');
+    redrawLikeCounter(cardId, result.likes.length)
+  })
+  .catch((err) => {
+    console.error('Ошибка при сохранении лайка на сервере.', err);
+  })
+}
+
+//Функция удаление Like
+export function handleDeleteLike(cardId) {
+  deleteLike(cardId)
+    .then((result) => {
+      document.getElementById(cardId).querySelector('.element__vector').classList.remove('element__vector_active');
+      redrawLikeCounter(cardId, result.likes.length)
+    })
+    .catch((err) => {
+      console.error('Ошибка при удалении лайка на сервере.', err);
+    })
+}
+
+avatarOpenBtn.addEventListener('click', ()=>{
+  openPopup(avatarPopup);
+});
+
 enableValidation({
   formSelector: '.form',
   inputSelector: '.form__input',
@@ -89,12 +134,13 @@ profilePopupButtonEdit.addEventListener("click", function () {
   profilePopupInputInfo.value = profilePopupAbout.textContent;
 });
 
-profilePopupForm.addEventListener("submit", sendingFormProfile);
 
-cardPopupForm.addEventListener('submit', createCard);
 
 profilePopupButtonAdd.addEventListener('click', () => {openPopup(cardPopup)
   shutdownButton();
 });
 
+profilePopupForm.addEventListener("submit", sendingFormProfile);
+cardPopupForm.addEventListener('submit', createCard);
 deleteFormElement.addEventListener('submit', handleDeleteElementFormSubmit);
+avatarFormElement.addEventListener('submit', handleAvatarFormSubmit);
