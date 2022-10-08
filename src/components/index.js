@@ -1,20 +1,21 @@
 import {cardPopup, profilePopup, profilePopupButtonEdit, profilePopupForm, cardPopupForm, profilePopupButtonAdd, profilePopupInputName, profilePopupInputInfo, profilePopupAbout, profilePopupName, profilePopupAvatar, elementTemplate, cardPopupContainer, cardPopupNewName, cardPopupNewLink, deletePopup, deleteFormElement, avatarOpenBtn, avatarPopup, avatarPopupLink, avatarFormElement} from "./constant.js";
 import {openPopup, closePopup, } from "./modal.js";
-import {shutdownButton, renderCard, redrawLikeCounter} from "./card.js";
+import {renderCard} from "./card.js";
 import {enableValidation} from "./validate.js";
-import {getUserInfo, patchUserInfo, getCards, postCard, deleteCard, putLike, deleteLike, patchUserAvatar} from './api.js';
+import {disableButton} from './utils.js'
+import {getUserInfo, patchUserInfo, getCards, postCard, deleteCard, patchUserAvatar} from './api.js';
 import '/src/pages/index.css';
 
 let userId;
 
 Promise.all([getUserInfo(), getCards()])
-  .then((result)=>{
-    profilePopupName.textContent = result[0].name;
-    profilePopupAbout.textContent = result[0].about;
-    profilePopupAvatar.src = result[0].avatar;
-    userId = result[0]._id;
+  .then(([userData, cards])=>{
+    profilePopupName.textContent = userData.name;
+    profilePopupAbout.textContent = userData.about;
+    profilePopupAvatar.src = userData.avatar;
+    userId = userData._id;
 
-    result[1].forEach((card) => {
+    cards.forEach((card) => {
       renderCard(card.name, card.link, card._id, card.likes, card.owner._id, userId);
     })
   })
@@ -46,13 +47,13 @@ function createCard(evt) {
   .then((result)=>{
     renderCard(cardPopupNewName.value, cardPopupNewLink.value, result._id, [],  result.owner._id, userId);
     closePopup(cardPopup);
+    evt.target.reset();
   })
   .catch((err) => {
     console.error('Ошибка при сохранении профиля.', err);
   })
   .finally(() => {
     evt.submitter.textContent = 'Создать'
-    evt.target.reset();
   });
 };
 
@@ -64,13 +65,13 @@ function handleDeleteElementFormSubmit(evt){
     .then(() => {
       document.getElementById(deletePopup.dataset.deletedElement).remove();
       closePopup(deletePopup);
+      deletePopup.dataset.deletedElement = '';
     })
     .catch((err) => {
       console.error('Ошибка при удалении карточки.', err);
     })
     .finally(() => {
       evt.submitter.textContent = 'Да'
-      deletePopup.dataset.deletedElement = '';
     });
 }
 
@@ -81,38 +82,14 @@ function handleAvatarFormSubmit(evt){
     .then((result) => {
       profilePopupAvatar.src = result.avatar;
       closePopup(avatarPopup);
+      evt.target.reset();
     })
     .catch((err) => {
       console.error('Ошибка при загрузке нового аватара.', err);
     })
     .finally(() => {
       evt.submitter.textContent = 'Сохранить'
-      evt.target.reset();
     });
-}
-
-//Функция добавления Like
-export function handlePutLike(cardId) {
-  putLike(cardId)
-  .then((result)=>{
-    document.getElementById(cardId).querySelector('.element__vector').classList.add('element__vector_active');
-    redrawLikeCounter(cardId, result.likes.length)
-  })
-  .catch((err) => {
-    console.error('Ошибка при сохранении лайка на сервере.', err);
-  })
-}
-
-//Функция удаление Like
-export function handleDeleteLike(cardId) {
-  deleteLike(cardId)
-    .then((result) => {
-      document.getElementById(cardId).querySelector('.element__vector').classList.remove('element__vector_active');
-      redrawLikeCounter(cardId, result.likes.length)
-    })
-    .catch((err) => {
-      console.error('Ошибка при удалении лайка на сервере.', err);
-    })
 }
 
 avatarOpenBtn.addEventListener('click', ()=>{
@@ -136,8 +113,8 @@ profilePopupButtonEdit.addEventListener("click", function () {
 
 
 
-profilePopupButtonAdd.addEventListener('click', () => {openPopup(cardPopup)
-  shutdownButton();
+profilePopupButtonAdd.addEventListener('click', () => {
+  openPopup(cardPopup)
 });
 
 profilePopupForm.addEventListener("submit", sendingFormProfile);

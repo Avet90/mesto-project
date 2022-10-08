@@ -1,6 +1,6 @@
 import {openPopupImage, openPopup} from './modal.js'
 import {elementTemplate, cardPopupContainer, deletePopup} from './constant.js' 
-import {handleDeleteLike, handlePutLike} from './index.js';
+import {putLike, deleteLike} from './api'
 
 // Функция создание карточки
 export function addElement(name, link, id, likes, ownerId, userId) {
@@ -44,12 +44,29 @@ function destroyElement(evt) {
   openPopup(deletePopup);
 }
 
-export function shutdownButton() {
-  const buttonMesto = document.querySelector(".mesto__add");
-  buttonMesto.setAttribute("disabled", true);
-  buttonMesto.classList.add('button_inactive');
-};
+//Функция добавления Like
+function handlePutLike(cardId) {
+  putLike(cardId)
+  .then((result)=>{
+    document.getElementById(cardId).querySelector('.element__vector').classList.add('element__vector_active');
+    redrawLikeCounter(cardId, result.likes.length)
+  })
+  .catch((err) => {
+    console.error('Ошибка при сохранении лайка на сервере.', err);
+  })
+}
 
+//Функция удаление Like
+export function handleDeleteLike(cardId) {
+  deleteLike(cardId)
+    .then((result) => {
+      document.getElementById(cardId).querySelector('.element__vector').classList.remove('element__vector_active');
+      redrawLikeCounter(cardId, result.likes.length)
+    })
+    .catch((err) => {
+      console.error('Ошибка при удалении лайка на сервере.', err);
+    })
+}
 
 function toggleLike(evt) {
   if (evt.target.classList.contains('element__vector_active')) {
