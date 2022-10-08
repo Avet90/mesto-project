@@ -1,7 +1,6 @@
 
 
-export function disableButton() {
-    const buttonMesto = document.querySelector(".mesto__add");
-    buttonMesto.setAttribute("disabled", true);
-    buttonMesto.classList.add('button_inactive');
+export function disableButton(submitButton) {
+    submitButton.setAttribute("disabled", true);
+    submitButton.classList.add('button_inactive');
   };
