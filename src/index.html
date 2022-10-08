@@ -20,13 +20,13 @@
           <img class="profile__avatar" id="avatar" src="" alt="Аватар" />
         </div>
         <div class="profile__info">
-          <h1 class="profile__title"></h1>
+          <h1 class="profile__title">Жак-Ив Кусто</h1>
           <button
             type="button"
             class="profile__edit-button"
             aria-label="Редактировать"
           ></button>
-          <p class="profile__subtitle"></p>
+          <p class="profile__subtitle">Исследователь океана</p>
         </div>
         <button
           class="profile__add-button"
@@ -141,6 +141,25 @@
       </div>
     </div>
 
+    <div class="popup popup-delete">
+      <div class="popup__container_delete">
+        <form
+          action="#"
+          class="form__delete"
+          method="post"
+          name="delete_element"
+        >
+          <h2 class="popup__heading_delete">Вы уверены ?</h2>
+          <button class="form__submit_delete" type="submit">Да</button>
+        </form>
+        <button
+          aria-label="Закрыть"
+          class="popup__close"
+          type="button"
+        ></button>
+      </div>
+    </div>
+
     <div class="popup popup-img">
       <div class="popup-img__container">
         <button
@@ -161,7 +180,10 @@
         </div>
         <div class="element__group">
           <h2 class="element__title"></h2>
-          <button type="button" class="element__vector"></button>
+          <div class="element__like-block">
+            <button type="button" class="element__vector"></button>
+            <p class="element__vector_counter"></p>
+          </div>
         </div>
       </div>
     </template>

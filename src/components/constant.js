@@ -21,12 +21,13 @@ const imagePopupLink = imagePopup.querySelector(".popup-img__image");
 const imagePopupButtonClose = document.querySelector('.popup-img__close-img')
 const imagePopupTitle = imagePopup.querySelector(".popup-img__title");
 
-
+const deletePopup = document.querySelector('.popup-delete');
+const deleteFormElement = deletePopup.querySelector('.form__delete');
 
 
 
 export {cardForm, imagePopup, popupMain, cardPopup, elementTemplate, 
     profilePopupInputName, profilePopupInputInfo, profilePopupAbout, 
     profilePopupForm, profilePopupButtonEdit, profilePopup, profilePopupName, cardPopupForm, profilePopupButtonAdd, pageMain, cardPopupContainer, cardPopupNewName, 
-    cardPopupNewLink, imagePopupLink, imagePopupTitle, imagePopupButtonClose, profilePopupAvatar,
+    cardPopupNewLink, imagePopupLink, imagePopupTitle, imagePopupButtonClose, profilePopupAvatar, deletePopup, deleteFormElement
 }

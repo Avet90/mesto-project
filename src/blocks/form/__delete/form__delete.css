@@ -1,0 +1,4 @@
+.form__delete{
+    display: flex;
+    flex-direction: column;
+}
