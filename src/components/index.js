@@ -1,7 +1,8 @@
 import {cardPopup, profilePopup, profilePopupButtonEdit, profilePopupForm, cardPopupForm, profilePopupButtonAdd, profilePopupInputName, profilePopupInputInfo, profilePopupAbout, profilePopupName, profilePopupAvatar, elementTemplate, cardPopupContainer, cardPopupNewName, cardPopupNewLink, deletePopup, deleteFormElement, avatarOpenBtn, avatarPopup, avatarPopupLink, avatarFormElement} from "./constant.js";
 import {openPopup, closePopup, } from "./modal.js";
-import {shutdownButton, renderCard, redrawLikeCounter} from "./card.js";
+import {renderCard, redrawLikeCounter} from "./card.js";
 import {enableValidation} from "./validate.js";
+import {disableButton} from './utils.js'
 import {getUserInfo, patchUserInfo, getCards, postCard, deleteCard, putLike, deleteLike, patchUserAvatar} from './api.js';
 import '/src/pages/index.css';
 
@@ -137,7 +138,7 @@ profilePopupButtonEdit.addEventListener("click", function () {
 
 
 profilePopupButtonAdd.addEventListener('click', () => {openPopup(cardPopup)
-  shutdownButton();
+  disableButton();
 });
 
 profilePopupForm.addEventListener("submit", sendingFormProfile);

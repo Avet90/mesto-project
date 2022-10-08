@@ -44,13 +44,6 @@ function destroyElement(evt) {
   openPopup(deletePopup);
 }
 
-export function shutdownButton() {
-  const buttonMesto = document.querySelector(".mesto__add");
-  buttonMesto.setAttribute("disabled", true);
-  buttonMesto.classList.add('button_inactive');
-};
-
-
 function toggleLike(evt) {
   if (evt.target.classList.contains('element__vector_active')) {
     handleDeleteLike(evt.target.closest('.element').id);
