@@ -1,5 +1,5 @@
 export {openPopup, closePopup, handleEsc, openPopupImage}
-import {cardForm, popupMain, cardPopup, imagePopup, pageMain, imagePopupLink, imagePopupTitle, } from "./constant.js"
+import {imagePopup, imagePopupLink, imagePopupTitle, } from "./constant.js"
 
 function openPopup(popup) {
     popup.classList.add('popup_opened');

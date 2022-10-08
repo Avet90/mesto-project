@@ -1,5 +1,6 @@
 .element__group {
+  align-items: center;
   display: flex;
-  justify-content: space-around;
-  background-color: none;
+  flex-direction: row;
+  justify-content: space-between;
 }

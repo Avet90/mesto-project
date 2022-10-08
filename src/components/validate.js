@@ -65,14 +65,5 @@ const enableValidation = (selectorsConfig) => {
     });
 };
 
-// const resetForm = (form, obj) => {
-//   const inputs = getInputs(form, obj);
-//   inputs.forEach(input => {
-//     hideInputError(form, input, obj);
-//   });
-//   toggleButtonState(form, querySelector(obj.submitButtonSelector), inputs, obj)
-// };
-
-
 export{showInputError, hideInputError, checkInputValidity, hasInvalidInput, 
     toggleButtonState, setEventListeners, enableValidation}

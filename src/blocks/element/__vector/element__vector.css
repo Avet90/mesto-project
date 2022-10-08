@@ -6,7 +6,6 @@
   margin-bottom: auto;
   background: url(../../../images/Like.svg);
   border: none;
-  margin-right: 30px;
   cursor: pointer;
 }
 .element__vector:hover {
