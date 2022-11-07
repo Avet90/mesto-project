@@ -1,0 +1,15 @@
+.form__submit_uni{
+    background-color: black;
+    border: 0;
+    border-radius: 2px;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 400;
+    height: 50px;
+    line-height: 22px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    transition: opacity .3s ease-in-out;
+}
