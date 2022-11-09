@@ -1,9 +1,9 @@
 import {cardPopup, profilePopup, profilePopupButtonEdit, profilePopupForm, cardPopupForm, profilePopupButtonAdd, profilePopupInputName, profilePopupInputInfo, profilePopupAbout, profilePopupName, profilePopupAvatar, elementTemplate, cardPopupContainer, cardPopupNewName, cardPopupNewLink, deletePopup, deleteFormElement, avatarOpenBtn, avatarPopup, avatarPopupLink, avatarFormElement} from "./constant.js";
 import {openPopup, closePopup, } from "./modal.js";
-import {renderCard} from "./card.js";
-import {enableValidation} from "./validate.js";
+import Card from "./Card.js";
+import {enableValidation} from "./FormValidator.js";
 import {disableButton} from './utils.js'
-import Api from './api.js';
+import Api from './Api.js';
 import '/src/pages/index.css';
 
 let userId;
@@ -53,7 +53,7 @@ function createCard(evt) {
   evt.submitter.textContent = 'Сохранение...'
   api.postCard(cardPopupNewName.value, cardPopupNewLink.value)
   .then((result)=>{
-    renderCard(cardPopupNewName.value, cardPopupNewLink.value, result._id, [],  result.owner._id, userId);
+    this.render(cardPopupNewName.value, cardPopupNewLink.value, result._id, [],  result.owner._id, userId);
     closePopup(cardPopup);
     evt.target.reset();
   })
