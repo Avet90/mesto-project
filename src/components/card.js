@@ -44,6 +44,7 @@ function destroyElement(evt) {
   openPopup(deletePopup);
 }
 
+//Перекинуть в Апи
 //Функция добавления Like
 function handlePutLike(cardId) {
   putLike(cardId)
@@ -56,6 +57,7 @@ function handlePutLike(cardId) {
   })
 }
 
+//Перекинуть в Апи
 //Функция удаление Like
 export function handleDeleteLike(cardId) {
   deleteLike(cardId)
@@ -67,6 +69,7 @@ export function handleDeleteLike(cardId) {
       console.error('Ошибка при удалении лайка на сервере.', err);
     })
 }
+
 
 function toggleLike(evt) {
   if (evt.target.classList.contains('element__vector_active')) {
