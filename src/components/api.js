@@ -1,90 +1,176 @@
+export default class Api {
+  constructor(options) {
+    this._baseUrl = options.baseUrl;
+    this._headers = options.headers;
+  }
 
-
-export const config = {
-    baseUrl: 'https://mesto.nomoreparties.co/v1/plus-cohort-15',
-    headers: {
-      authorization: 'ba6097cc-c5ae-47eb-ae48-050b54337db7',
-      'Content-Type': 'application/json'
-    }
-}
-  
-export function checkResponse(res) {
+  _checkResponse(res) {
     if (res.ok) {
         return res.json();
     }
     return Promise.reject(`Код ошибки: ${res.status}`);
-}
+  }
 
-export function getUserInfo() {
-    return fetch(`${config.baseUrl}/users/me`, {
-        headers: config.headers
+  getInitialCards() {
+    return fetch(`${this._baseUrl}/cards`, {
+      headers: this._headers
     })
-    .then(checkResponse)
-}
+    .then((res) => this._checkResponse(res))
+  }
 
-export function patchUserInfo(name, about) {
-    return fetch(`${config.baseUrl}/users/me`, {
+  getUserInfo() {
+    return fetch(`${this._baseUrl}/users/me`, {
+        headers: this._headers
+    })
+    .then((res) => this._checkResponse(res))
+  }
+
+  patchUserInfo(name, about) {
+    return fetch(`${this._baseUrl}/users/me`, {
       method: 'PATCH',
-      headers: config.headers,
+      headers: this._headers,
       body: JSON.stringify({
         name: name,
         about: about
       })
     })
-    .then(checkResponse)
-}
+    .then((res) => this._checkResponse(res))
+  }
 
-export function getCards() {
-    return fetch(`${config.baseUrl}/cards`, {
-      headers: config.headers
-    })
-    .then(checkResponse)
-}
-
-
-export function postCard(name, link) {
-    return fetch(`${config.baseUrl}/cards`, {
+  postCard(name, link) {
+    return fetch(`${this._baseUrl}/cards`, {
       method: 'POST',
-      headers: config.headers,
+      headers: this._headers,
       body: JSON.stringify({
         name: name,
         link: link
       })
     })
-    .then(checkResponse)
-}
+    .then((res) => this._checkResponse(res))
+  }
 
-export function deleteCard(id){
-    return fetch(`${config.baseUrl}/cards/${id}`, {
+  deleteCard(id){
+    return fetch(`${this._baseUrl}/cards/${id}`, {
       method: 'DELETE',
-      headers: config.headers,
+      headers: this._headers,
     })
-    .then(checkResponse)
-}
+    .then((res) => this._checkResponse(res))
+  }
 
-export function putLike(id){
-    return fetch(`${config.baseUrl}/cards/likes/${id}`, {
+  putLike(id){
+    return fetch(`${this._baseUrl}/cards/likes/${id}`, {
       method: 'PUT',
-      headers: config.headers,
+      headers: this._headers,
     })
-    .then(checkResponse)
-}
+    .then((res) => this._checkResponse(res))
+  }
 
-export function deleteLike(id){
-    return fetch(`${config.baseUrl}/cards/likes/${id}`, {
+  deleteLike(id){
+    return fetch(`${this._baseUrl}/cards/likes/${id}`, {
       method: 'DELETE',
-      headers: config.headers,
+      headers: this._headers,
     })
-    .then(checkResponse)
+    .then((res) => this._checkResponse(res))
+  }
+
+  patchUserAvatar(link) {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar: link
+      })
+    })
+    .then((res) => this._checkResponse(res))
+  }
 }
 
-export function patchUserAvatar(link) {
-  return fetch(`${config.baseUrl}/users/me/avatar`, {
-    method: 'PATCH',
-    headers: config.headers,
-    body: JSON.stringify({
-      avatar: link
-    })
-  })
-  .then(checkResponse)
-}
+
+// export const config = {
+//     baseUrl: 'https://mesto.nomoreparties.co/v1/plus-cohort-15',
+//     headers: {
+//       authorization: 'ba6097cc-c5ae-47eb-ae48-050b54337db7',
+//       'Content-Type': 'application/json'
+//     }
+// }
+  
+// export function checkResponse(res) {
+//     if (res.ok) {
+//         return res.json();
+//     }
+//     return Promise.reject(`Код ошибки: ${res.status}`);
+// }
+
+// export function getUserInfo() {
+//     return fetch(`${config.baseUrl}/users/me`, {
+//         headers: config.headers
+//     })
+//     .then(checkResponse)
+// }
+
+// export function patchUserInfo(name, about) {
+//     return fetch(`${config.baseUrl}/users/me`, {
+//       method: 'PATCH',
+//       headers: config.headers,
+//       body: JSON.stringify({
+//         name: name,
+//         about: about
+//       })
+//     })
+//     .then(checkResponse)
+// }
+
+// export function getCards() {
+//     return fetch(`${config.baseUrl}/cards`, {
+//       headers: config.headers
+//     })
+//     .then(checkResponse)
+// }
+
+
+// export function postCard(name, link) {
+//     return fetch(`${config.baseUrl}/cards`, {
+//       method: 'POST',
+//       headers: config.headers,
+//       body: JSON.stringify({
+//         name: name,
+//         link: link
+//       })
+//     })
+//     .then(checkResponse)
+// }
+
+// export function deleteCard(id){
+//     return fetch(`${config.baseUrl}/cards/${id}`, {
+//       method: 'DELETE',
+//       headers: config.headers,
+//     })
+//     .then(checkResponse)
+// }
+
+// export function putLike(id){
+//     return fetch(`${config.baseUrl}/cards/likes/${id}`, {
+//       method: 'PUT',
+//       headers: config.headers,
+//     })
+//     .then(checkResponse)
+// }
+
+// export function deleteLike(id){
+//     return fetch(`${config.baseUrl}/cards/likes/${id}`, {
+//       method: 'DELETE',
+//       headers: config.headers,
+//     })
+//     .then(checkResponse)
+// }
+
+// export function patchUserAvatar(link) {
+//   return fetch(`${config.baseUrl}/users/me/avatar`, {
+//     method: 'PATCH',
+//     headers: config.headers,
+//     body: JSON.stringify({
+//       avatar: link
+//     })
+//   })
+//   .then(checkResponse)
+// }
