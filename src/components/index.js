@@ -32,7 +32,8 @@ import {
   avatarPopup,
   avatarPopupLink,
   avatarFormElement,
-  userInfoSelectors
+  userInfoSelectors,
+  // popupSelectors
 } from "./constant.js";
 
 
@@ -49,6 +50,17 @@ const api = new Api({
 });
 
 const userInfo = new UserInfo(userInfoSelectors);
+
+// Create PopupWithForms instances  
+const popupEditProfile = new PopupWithForm(".popup-edit", sendingFormProfile);
+const popupEditAvatar = new PopupWithForm(".popup-avatar", sendingFormProfile);
+const popupDeleteCard = new PopupWithForm(".popup-delete", sendingFormProfile);
+const popupAddCard = new PopupWithForm(".mesto", sendingFormProfile);
+// Set eventlisteners for PopupWithForms instances  
+popupEditProfile.setEventListeners();
+popupEditAvatar.setEventListeners();
+popupDeleteCard.setEventListeners();
+popupAddCard.setEventListeners();
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([userData, cards]) => {
@@ -137,21 +149,22 @@ function handleAvatarFormSubmit(evt) {
 }
 
 avatarOpenBtn.addEventListener('click', () => {
-  openPopup(avatarPopup);
+  // openPopup(avatarPopup);
+  popupEditAvatar.open();
 });
-
-
 
 profilePopupButtonEdit.addEventListener("click", function () {
-  openPopup(profilePopup);
-  profilePopupInputName.value = profilePopupName.textContent;
-  profilePopupInputInfo.value = profilePopupAbout.textContent;
+  // openPopup(profilePopup);
+  popupEditProfile.open();
+  // console.log(popupEditProfile)
+  // profilePopupInputName.value = popupEditProfile.textContent;
+  // profilePopupInputInfo.value = profilePopupAbout.textContent;
 });
-
 
 
 profilePopupButtonAdd.addEventListener('click', () => {
-  openPopup(cardPopup)
+  // openPopup(cardPopup)
+  popupAddCard.open();
 });
 
 profilePopupForm.addEventListener("submit", sendingFormProfile);
