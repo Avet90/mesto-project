@@ -1,16 +1,16 @@
-export default class Popap{
+export default class Popup{
   constructor({ popupSelector }) {
-    this._popap = document.querySelector(popupSelector);
+    this._popup = document.querySelector(popupSelector);
   }
 
   open () {
-    this._popap.classList.add('popup_opened');
+    this._popup.classList.add('popup_opened');
     document.addEventListener('keydown', this._handleEscClose());
     
   };
 
   close () {
-    this._popap.classList.remove('popup_opened');
+    this._popup.classList.remove('popup_opened');
     document.removeEventListener('keydown', this._handleEscClose());
   };
 
@@ -27,7 +27,7 @@ export default class Popap{
   };
 
   setEventListeners () {
-    this._popap.addEventListener('mousedown', (evt) => {
+    this._popup.addEventListener('mousedown', (evt) => {
        this._checkClick(evt)
     });
   }
