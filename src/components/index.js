@@ -1,16 +1,44 @@
-import { cardPopup, profilePopup, profilePopupButtonEdit, profilePopupForm, cardPopupForm, profilePopupButtonAdd, profilePopupInputName, profilePopupInputInfo, profilePopupAbout, profilePopupName, profilePopupAvatar, elementTemplate, cardPopupContainer, cardPopupNewName, cardPopupNewLink, deletePopup, deleteFormElement, avatarOpenBtn, avatarPopup, avatarPopupLink, avatarFormElement } from "./constant.js";
+import '/src/pages/index.css';
+
 // import { openPopup, closePopup, } from "./modal.js";
 import Card from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
 import { disableButton } from './utils.js'
 import Api from './Api.js';
-import '/src/pages/index.css';
 import Section from './Section'
 import PopupWithForm from './PopupWithForm'
 import PopupWithImage from './PopupWithImage'
+import UserInfo from './UserInfo'
+
+import {
+  cardPopup,
+  profilePopup,
+  profilePopupButtonEdit,
+  profilePopupForm,
+  cardPopupForm,
+  profilePopupButtonAdd,
+  profilePopupInputName,
+  profilePopupInputInfo,
+  profilePopupAbout,
+  profilePopupName,
+  profilePopupAvatar,
+  elementTemplate,
+  cardPopupContainer,
+  cardPopupNewName,
+  cardPopupNewLink,
+  deletePopup,
+  deleteFormElement,
+  avatarOpenBtn,
+  avatarPopup,
+  avatarPopupLink,
+  avatarFormElement,
+  userInfoSelectors
+} from "./constant.js";
 
 
 let userId;
+
+
 
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/plus-cohort-15',
@@ -20,11 +48,15 @@ const api = new Api({
   }
 });
 
-Promise.all([api.getUserInfo(), api.getCards()])
+const userInfo = new UserInfo(userInfoSelectors);
+
+Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([userData, cards]) => {
-    profilePopupName.textContent = userData.name;
-    profilePopupAbout.textContent = userData.about;
-    profilePopupAvatar.src = userData.avatar;
+    // profilePopupName.textContent = userData.name;
+    // profilePopupAbout.textContent = userData.about;
+    // profilePopupAvatar.src = userData.avatar;
+    userInfo.setUserInfo(userData);
+    userInfo.setUserAvatar(userData);
     userId = userData._id;
 
     cards.forEach((card) => {
@@ -108,14 +140,7 @@ avatarOpenBtn.addEventListener('click', () => {
   openPopup(avatarPopup);
 });
 
-enableValidation({
-  formSelector: '.form',
-  inputSelector: '.form__input',
-  submitButtonSelector: '.form__submit',
-  inactiveButtonClass: 'button_inactive',
-  inputErrorClass: 'form__input_type_error',
-  errorClass: 'form__input-error_active'
-});
+
 
 profilePopupButtonEdit.addEventListener("click", function () {
   openPopup(profilePopup);
