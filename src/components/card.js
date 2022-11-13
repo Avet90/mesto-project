@@ -1,68 +1,101 @@
 export default class Card {
-  constructor(name, link, _id, likes, owner, userId, templateSelector, handleCardClick, handleLikeClick, openConfirmform) {
-    this._name = name;
-    this._link = link;
-    this.cardId = _id;
-    this.likes = likes;
-    this._ownerId = owner._id;
-    this._userId = userId;
-    this._templateSelector = templateSelector;
-    this._handleCardClick = handleCardClick;
-    this._handleLikeClick = handleLikeClick;
-    this._openConfirmForm = openConfirmform;
+  constructor(
+    data,
+    cardConstructor,
+    { userData, handleLike, handleLikeDelete, requestDelete, handleImageClick }
+  ) {
+    this._data = data;
+    this._name = data.name;
+    this._link = data.link;
+    this._alt = data.alt;
+    this._id = data._id;
+    this._likes = data.likes;
+    this._ownerId = data.owner._id;
+    this._userId = userData;
+
+    this._constructor = cardConstructor;
+    this._handleLike = handleLike;
+    this._handleLikeDelete = handleLikeDelete;
+    this._requestDelete = requestDelete;
+    this._handleImageClick = handleImageClick;
   }
 
-  _makeTamplate(){
-    const elementTemplate = document.querySelector(this._templateSelector).content;
-    this._elementElement = elementTemplate.querySelector('.element').cloneNode(true);
-    this._elementElement.querySelector('.element__title').textContent = this._name;
-    this._photo = this._elementElement.querySelector('.element__img');
-    this._likeButton = this._elementElement.querySelector('.element__vector');
-    this._likeCounter = this._elementElement.querySelector('.element__vector_counter');
-    this._deleteButtton = this._elementElement.querySelector('.element__korzina');
-    this._photo.src = this._link;
-    this._photo.alt = this._name;
-
-    if (this._ownerId != this._userId) {
-        this._deleteButtton.remove();
+  _checkId() {
+    if (this._ownerId !== this._userId) {
+      this._deleteButton.classList.add("element__delete-icon_type_hidden");
     }
-    this._setLikeState();
+  }
+
+  _getElement() {
+    const cardElement = document
+      .querySelector(this._constructor)
+      .content.querySelector('.element')
+      .cloneNode(true);
+    return cardElement;
+  }
+
+  _checkLikeUserSet() {
+    this._likes.forEach((like) => {
+      if (like._id === this._userId) {
+        this._likeButton.classList.add("element__like_active");
+      }
+    });
+  }
+
+  _getLikesCounter() {
+    this._counter.textContent = this._likes.length;
+  }
+
+  like(data) {
+    this._likeButton.classList.add("element__like_active");
+    return (this._counter.textContent = `${data.likes.length}`);
+  }
+
+  deleteLike(data) {
+    this._likeButton.classList.remove("element__like_active");
+    return (this._counter.textContent = `${data.likes.length}`);
   }
 
   _setEventListeners() {
-    this._likeButton.addEventListener('click', () => this._handleLikeClick(this));
-    this._deleteButtton.addEventListener('click', () => this._openConfirmForm(this));
-    this._photo.addEventListener('click', () => this._handleCardClick(this._name, this._link));
-  }
+    this._image.addEventListener("click", () => {
+      this._handleImageClick();
+    });
 
-  hasLiked() {
-    return this.likes.some((like) => like.id === this._userId);
-  }
+    this._likeButton.addEventListener("click", () => {
+      if (!this._likeButton.classList.contains("element__like_active")) {
+        this._handleLike();
+      } else {
+        this._handleLikeDelete();
+      }
+    });
 
-  _setLikeState() {
-    this._likeCounter.textContent = this.likes.length;
-    if (this.hasLiked()) {
-        this._likeButton.classList.add('element__vector_active')
-    } else {
-        this._likeButton.classList.remove('element__vector_active');
-    }
-  }
-
-  toggleLike() {
-    this._setLikeState()
+    this._deleteButton.addEventListener("click", () => {
+      this._requestDelete();
+    });
   }
 
   deleteCard() {
-    this._elementElement.remove();
-    this._elementElement = null;
+    this._element.remove();
   }
 
-  render() {
-    this._makeTamplate();
-    this._setEventListeners();
-    return this._elementElement;
+  createCard() {
+    this._element = this._getElement();
+    this._image = this._element.querySelector(".element__img");
+    this._deleteButton = this._element.querySelector(".element__korzina");
+    this._likeButton = this._element.querySelector(".element__like-block");
+    this._counter = this._element.querySelector(".element__vector-counter");
+    this._element.querySelector(".element__title").textContent = this._name;
+    this._image.src = this._link;
+    this._image.alt = this._name;
+
+    // this._getLikesCounter();
+    // this._checkId();
+    // this._checkLikeUserSet();
+    // this._setEventListeners();
+
+    return this._element;
   }
-};
+}
 
 // import {openPopupImage, openPopup} from './modal.js'
 // import {elementTemplate, cardPopupContainer, deletePopup} from './constant.js' 
