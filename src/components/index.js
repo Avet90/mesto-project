@@ -1,10 +1,14 @@
-import {cardPopup, profilePopup, profilePopupButtonEdit, profilePopupForm, cardPopupForm, profilePopupButtonAdd, profilePopupInputName, profilePopupInputInfo, profilePopupAbout, profilePopupName, profilePopupAvatar, elementTemplate, cardPopupContainer, cardPopupNewName, cardPopupNewLink, deletePopup, deleteFormElement, avatarOpenBtn, avatarPopup, avatarPopupLink, avatarFormElement} from "./constant.js";
-import {openPopup, closePopup, } from "./modal.js";
+import { cardPopup, profilePopup, profilePopupButtonEdit, profilePopupForm, cardPopupForm, profilePopupButtonAdd, profilePopupInputName, profilePopupInputInfo, profilePopupAbout, profilePopupName, profilePopupAvatar, elementTemplate, cardPopupContainer, cardPopupNewName, cardPopupNewLink, deletePopup, deleteFormElement, avatarOpenBtn, avatarPopup, avatarPopupLink, avatarFormElement } from "./constant.js";
+// import { openPopup, closePopup, } from "./modal.js";
 import Card from "./Card.js";
-import {enableValidation} from "./FormValidator.js";
-import {disableButton} from './utils.js'
+import { FormValidator } from "./FormValidator.js";
+import { disableButton } from './utils.js'
 import Api from './Api.js';
 import '/src/pages/index.css';
+import Section from './Section'
+import PopupWithForm from './PopupWithForm'
+import PopupWithImage from './PopupWithImage'
+
 
 let userId;
 
@@ -17,7 +21,7 @@ const api = new Api({
 });
 
 Promise.all([api.getUserInfo(), api.getCards()])
-  .then(([userData, cards])=>{
+  .then(([userData, cards]) => {
     profilePopupName.textContent = userData.name;
     profilePopupAbout.textContent = userData.about;
     profilePopupAvatar.src = userData.avatar;
@@ -27,46 +31,46 @@ Promise.all([api.getUserInfo(), api.getCards()])
       renderCard(card.name, card.link, card._id, card.likes, card.owner._id, userId);
     })
   })
-  .catch((err)=>{
+  .catch((err) => {
     console.error('Ошибка при загрузке данных с сервера.', err);
-});
+  });
 
 function sendingFormProfile(evt) {
-  evt.preventDefault(); 
+  evt.preventDefault();
   evt.submitter.textContent = 'Сохранение...'
   api.patchUserInfo(profilePopupInputName.value, profilePopupInputInfo.value)
-  .then(() => {
-    profilePopupName.textContent = profilePopupInputName.value;
-    profilePopupAbout.textContent = profilePopupInputInfo.value;
-    closePopup(profilePopup);
-  })
-  .catch((err) => {
-    console.error('Ошибка при сохранении профиля.', err);
-  })
-  .finally(() => {
-    evt.submitter.textContent = 'Сохранить'
-  });
+    .then(() => {
+      profilePopupName.textContent = profilePopupInputName.value;
+      profilePopupAbout.textContent = profilePopupInputInfo.value;
+      closePopup(profilePopup);
+    })
+    .catch((err) => {
+      console.error('Ошибка при сохранении профиля.', err);
+    })
+    .finally(() => {
+      evt.submitter.textContent = 'Сохранить'
+    });
 };
 
 function createCard(evt) {
   evt.preventDefault();
   evt.submitter.textContent = 'Сохранение...'
   api.postCard(cardPopupNewName.value, cardPopupNewLink.value)
-  .then((result)=>{
-    this.render(cardPopupNewName.value, cardPopupNewLink.value, result._id, [],  result.owner._id, userId);
-    closePopup(cardPopup);
-    evt.target.reset();
-  })
-  .catch((err) => {
-    console.error('Ошибка при сохранении профиля.', err);
-  })
-  .finally(() => {
-    evt.submitter.textContent = 'Создать'
-  });
+    .then((result) => {
+      this.render(cardPopupNewName.value, cardPopupNewLink.value, result._id, [], result.owner._id, userId);
+      closePopup(cardPopup);
+      evt.target.reset();
+    })
+    .catch((err) => {
+      console.error('Ошибка при сохранении профиля.', err);
+    })
+    .finally(() => {
+      evt.submitter.textContent = 'Создать'
+    });
 };
 
 // обработчик формы подтверждения удаления карточки
-function handleDeleteElementFormSubmit(evt){
+function handleDeleteElementFormSubmit(evt) {
   evt.preventDefault();
   evt.submitter.textContent = 'Удаление...'
   const promiseDeleteCard = api.deleteCard(deletePopup.dataset.deletedElement)
@@ -83,7 +87,7 @@ function handleDeleteElementFormSubmit(evt){
     });
 }
 
-function handleAvatarFormSubmit(evt){
+function handleAvatarFormSubmit(evt) {
   evt.preventDefault();
   evt.submitter.textContent = 'Сохранение...'
   const promisePatchUserAvatar = api.patchUserAvatar(avatarPopupLink.value)
@@ -100,7 +104,7 @@ function handleAvatarFormSubmit(evt){
     });
 }
 
-avatarOpenBtn.addEventListener('click', ()=>{
+avatarOpenBtn.addEventListener('click', () => {
   openPopup(avatarPopup);
 });
 
