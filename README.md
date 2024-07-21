@@ -14,4 +14,5 @@
 6. JavaScript
 7. Webpack
 
-### [ссылка на проект](https://Avet90.github.io/mesto-project/)
+<-### [ссылка на проект](https://Avet90.github.io/mesto-project/)
+->
