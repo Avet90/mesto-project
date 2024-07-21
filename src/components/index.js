@@ -3,12 +3,20 @@ import {openPopup, closePopup, } from "./modal.js";
 import {renderCard} from "./card.js";
 import {enableValidation} from "./validate.js";
 import {disableButton} from './utils.js'
-import {getUserInfo, patchUserInfo, getCards, postCard, deleteCard, patchUserAvatar} from './api.js';
+import Api from './api.js';
 import '/src/pages/index.css';
 
 let userId;
 
-Promise.all([getUserInfo(), getCards()])
+const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/plus-cohort-15',
+  headers: {
+    authorization: 'ba6097cc-c5ae-47eb-ae48-050b54337db7',
+    'Content-Type': 'application/json'
+  }
+});
+
+Promise.all([api.getUserInfo(), api.getCards()])
   .then(([userData, cards])=>{
     profilePopupName.textContent = userData.name;
     profilePopupAbout.textContent = userData.about;
@@ -26,7 +34,7 @@ Promise.all([getUserInfo(), getCards()])
 function sendingFormProfile(evt) {
   evt.preventDefault(); 
   evt.submitter.textContent = 'Сохранение...'
-  patchUserInfo(profilePopupInputName.value, profilePopupInputInfo.value)
+  api.patchUserInfo(profilePopupInputName.value, profilePopupInputInfo.value)
   .then(() => {
     profilePopupName.textContent = profilePopupInputName.value;
     profilePopupAbout.textContent = profilePopupInputInfo.value;
@@ -43,7 +51,7 @@ function sendingFormProfile(evt) {
 function createCard(evt) {
   evt.preventDefault();
   evt.submitter.textContent = 'Сохранение...'
-  postCard(cardPopupNewName.value, cardPopupNewLink.value)
+  api.postCard(cardPopupNewName.value, cardPopupNewLink.value)
   .then((result)=>{
     renderCard(cardPopupNewName.value, cardPopupNewLink.value, result._id, [],  result.owner._id, userId);
     closePopup(cardPopup);
@@ -61,7 +69,7 @@ function createCard(evt) {
 function handleDeleteElementFormSubmit(evt){
   evt.preventDefault();
   evt.submitter.textContent = 'Удаление...'
-  const promiseDeleteCard = deleteCard(deletePopup.dataset.deletedElement)
+  const promiseDeleteCard = api.deleteCard(deletePopup.dataset.deletedElement)
     .then(() => {
       document.getElementById(deletePopup.dataset.deletedElement).remove();
       closePopup(deletePopup);
@@ -78,7 +86,7 @@ function handleDeleteElementFormSubmit(evt){
 function handleAvatarFormSubmit(evt){
   evt.preventDefault();
   evt.submitter.textContent = 'Сохранение...'
-  const promisePatchUserAvatar = patchUserAvatar(avatarPopupLink.value)
+  const promisePatchUserAvatar = api.patchUserAvatar(avatarPopupLink.value)
     .then((result) => {
       profilePopupAvatar.src = result.avatar;
       closePopup(avatarPopup);
