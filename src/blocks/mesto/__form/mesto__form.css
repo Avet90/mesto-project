@@ -1,0 +1,6 @@
+.mesto__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: flex-end;
+}

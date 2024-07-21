@@ -1,0 +1,28 @@
+.mesto__close-vector {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: -46px;
+  right: -46px;
+  background-image: url(../../../images/Close_Icon.svg);
+  background-repeat: no-repeat;
+  background-color: initial;
+  border: none;
+  cursor: pointer;
+}
+
+.mesto__close-vector:hover {
+  opacity: 0.6;
+  transition: all 0.3s linear;
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+}
+@media screen and (max-width: 550px) {
+  .mesto__close-vector {
+    background-size: 20px;
+    max-width: 20px;
+    max-height: 20px;
+    top: -35px;
+    right: 0;
+  }
+}

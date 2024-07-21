@@ -1,0 +1,4 @@
+.form__uni{
+    display: flex;
+    flex-direction: column;
+}
